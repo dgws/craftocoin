@@ -85,26 +85,6 @@
   }
 </style>
 </head>
-<!-- <body class="container mt-5">
-    <div class="card p-4">
-        <h2 class="mb-3">Калькулятор для рассчета усреднения на Veles</h2>
-        <div class="mb-3">
-            <label for="num1" class="form-label">Колличество монет</label>
-            <input type="number" id="num1" class="form-control" placeholder="Введите сколько монет">
-        </div>
-        <div class="mb-3">
-            <label for="num2" class="form-label">По какой цене</label>
-            <input type="number" id="num2" class="form-control" placeholder="Введите цену">
-        </div>
-        <div class="mb-3">
-            <label for="num3" class="form-label">Ваше текущее плечо в боте</label>
-            <input type="number" id="num3" class="form-control" placeholder="Введите плече бота">
-        </div>
-        <button class="btn btn-primary" onclick="calculate()">Вычислить</button>
-        <button class="btn btn-secondary ms-2" onclick="clearFields()">Очистить</button>
-        <h3 class="mt-3">Результат: <span id="result">0</span> нужно USDT для усреднения</h3>
-    </div> -->
-
     <body class="container mt-5">
 
   <h1 class="text-center mb-4">CraftoCoin Tools ⚙️</h1>
@@ -115,7 +95,7 @@
       <button class="nav-link active" id="calc-tab" data-bs-toggle="tab" data-bs-target="#calc" type="button" role="tab">Калькулятор усреднения</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools" type="button" role="tab">Инструменты</button>
+      <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools" type="button" role="tab">SPOT</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
@@ -150,8 +130,44 @@
     <!-- Вкладка 2 -->
     <div class="tab-pane fade" id="tools" role="tabpanel">
       <div class="card p-4">
-        <h2>Другие инструменты</h2>
-        <p>Здесь можно добавить новые калькуляторы, анализаторы или парсеры для крипто-трейдинга.</p>
+        <h2>Вычислить прибыль на споте</h2>
+        <div class="row">
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input1" placeholder="Amount of coins" readonly>
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input2" placeholder="Amount of attachments $" pattern="[0-9,]*" inputmode="decimal">
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input3" placeholder="Buy price" pattern="[0-9,]*" inputmode="decimal">
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input7" placeholder="Purchase commission" pattern="[0-9,]*" inputmode="decimal">
+            </div>
+          </div>
+          <div class="container">
+            <br>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input4" placeholder="Selling price" pattern="[0-9,]*" inputmode="decimal">
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input5" placeholder="Total profit" readonly>
+              <div id="indicator" class="bg-success"></div>
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input6" placeholder="Net profit" readonly>
+            </div>
+            <div class="col-md-2 col-xs-8">
+              <input type="number" class="form-control" id="input8" placeholder="Sales commission" pattern="[0-9,]*" inputmode="decimal">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8  col-xs-8">
+              <button type="button" class="btn btn-primary btn-block" onclick="calculaterent()">Calculate</button>
+            </div>
+          </div>
       </div>
     </div>
 
@@ -187,6 +203,7 @@
 
   <script src="./calc.js"></script>
   <script src="./modal.js"></script>
+  <script src="./spotcals.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
