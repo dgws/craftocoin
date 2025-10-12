@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftoCoin tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+ .coffee-btn {
+    position: fixed;
+    bottom: 20px;      /* отступ снизу */
+    right: 20px;       /* отступ справа */
+    background-color: #ffb347;
+    color: #222;
+    font-size: 20px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  .coffee-btn:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+  }
+
+  /* Модальное окно */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .modal-content {
+    background-color: #1e1e1e;
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px #ffb347;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #fff;
+  }
+
+  .wallet {
+    margin: 15px 0;
+    padding: 10px;
+    background: #fcfcfc;
+    border-radius: 8px;
+    font-family: monospace;
+    word-wrap: break-word;
+  }
+
+  .modal h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ffb347;
+  }
+</style>
+</head>
+<!-- <body class="container mt-5">
+    <div class="card p-4">
+        <h2 class="mb-3">Калькулятор для рассчета усреднения на Veles</h2>
+        <div class="mb-3">
+            <label for="num1" class="form-label">Колличество монет</label>
+            <input type="number" id="num1" class="form-control" placeholder="Введите сколько монет">
+        </div>
+        <div class="mb-3">
+            <label for="num2" class="form-label">По какой цене</label>
+            <input type="number" id="num2" class="form-control" placeholder="Введите цену">
+        </div>
+        <div class="mb-3">
+            <label for="num3" class="form-label">Ваше текущее плечо в боте</label>
+            <input type="number" id="num3" class="form-control" placeholder="Введите плече бота">
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Вычислить</button>
+        <button class="btn btn-secondary ms-2" onclick="clearFields()">Очистить</button>
+        <h3 class="mt-3">Результат: <span id="result">0</span> нужно USDT для усреднения</h3>
+    </div> -->
+
+    <body class="container mt-5">
+
+  <h1 class="text-center mb-4">CraftoCoin Tools ⚙️</h1>
+
+  <!-- Вкладки -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="calc-tab" data-bs-toggle="tab" data-bs-target="#calc" type="button" role="tab">Калькулятор усреднения</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools" type="button" role="tab">Инструменты</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
+    </li>
+  </ul>
+
+  <!-- Контент вкладок -->
+  <div class="tab-content mt-4" id="myTabContent">
+
+    <!-- Вкладка 1 -->
+    <div class="tab-pane fade show active" id="calc" role="tabpanel">
+      <div class="card p-4">
+        <h2 class="mb-3">Калькулятор для рассчета усреднения на Veles</h2>
+        <div class="mb-3">
+          <label for="num1" class="form-label">Количество монет</label>
+          <input type="number" id="num1" class="form-control" placeholder="Введите сколько монет">
+        </div>
+        <div class="mb-3">
+          <label for="num2" class="form-label">По какой цене</label>
+          <input type="number" id="num2" class="form-control" placeholder="Введите цену">
+        </div>
+        <div class="mb-3">
+          <label for="num3" class="form-label">Ваше текущее плечо в боте</label>
+          <input type="number" id="num3" class="form-control" placeholder="Введите плечо бота">
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Вычислить</button>
+        <button class="btn btn-secondary ms-2" onclick="clearFields()">Очистить</button>
+        <h3 class="mt-3">Результат: <span id="result">0</span> USDT для усреднения</h3>
+      </div>
+    </div>
+
+    <!-- Вкладка 2 -->
+    <div class="tab-pane fade" id="tools" role="tabpanel">
+      <div class="card p-4">
+        <h2>Другие инструменты</h2>
+        <p>Здесь можно добавить новые калькуляторы, анализаторы или парсеры для крипто-трейдинга.</p>
+      </div>
+    </div>
+
+    <!-- Вкладка 3 -->
+    <div class="tab-pane fade" id="about" role="tabpanel">
+      <div class="card p-4">
+        <h2>О проекте</h2>
+        <p>CraftoCoin Tools — это набор удобных инструментов для трейдеров и инвесторов.  
+        Здесь вы можете быстро рассчитать усреднение, расходы и планировать сделки.</p>
+      </div>
+    </div>
+
+  </div>
+
+
+<button class="coffee-btn" id="openModal">Автору на кофе ☕</button>
+
+<div id="coffeeModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Поддержать автора 💰</h3>
+    <div class="wallet">
+      <strong>BTC:</strong> bc1qexamplebtcwallet12345
+    </div>
+    <div class="wallet">
+      <strong>ETH:</strong> 0xExampleEthWallet987654321
+    </div>
+    <div class="wallet">
+      <strong>USDT (TRC20):</strong> TExampleTetherWallet1111
+    </div>
+  </div>
+</div>
+
+  <script src="./calc.js"></script>
+  <script src="./modal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
