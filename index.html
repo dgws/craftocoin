@@ -138,6 +138,33 @@
   bottom: 60px;
 }
 
+/* Кнопка */
+.floating-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #000;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.6);
+  cursor: pointer;
+  z-index: 999; /* выше, чем у footer */
+  transition: all 0.3s ease;
+}
+
+/* Для мобильных — кнопка наезжает на текст footer */
+@media (max-width: 600px) {
+  .floating-btn {
+    bottom: 25px; /* чуть выше футера */
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+}
+
+
   .footer {
   text-align: center;
   padding-top: 15px;
