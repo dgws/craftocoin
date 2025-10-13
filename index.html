@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CraftoCoin tools</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
   body {
   margin-bottom: 60px; /* отступ под футер */
@@ -198,6 +199,9 @@
       <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools" type="button" role="tab">SPOT</button>
     </li>
     <li class="nav-item" role="presentation">
+      <button class="nav-link" id="orderSize-tab" data-bs-toggle="tab" data-bs-target="#orderSize" type="button" role="tab">Спот/DCA</button>
+    </li>
+    <li class="nav-item" role="presentation">
       <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
     </li>
   </ul>
@@ -208,7 +212,7 @@
     <!-- Вкладка 1 -->
     <div class="tab-pane fade show active" id="calc" role="tabpanel">
       <div class="card p-4">
-        <h2 class="mb-3">Калькулятор для рассчета усреднения на Veles</h2>
+        <h2 class="mb-3">Рассчет усреднения на Veles</h2>
         <div class="mb-3">
           <label for="num1" class="form-label">Количество монет</label>
           <input type="number" id="num1" class="form-control" placeholder="Введите сколько монет">
@@ -271,7 +275,27 @@
       </div>
     </div>
 
-    <!-- Вкладка 3 -->
+   <!-- Вкладка 3 -->
+    <div class="tab-pane fade" id="orderSize" role="tabpanel">
+      <div class="card p-4">
+      <h2>Рассчет профита с одного цикла для Grid ботов и Фючерсных DCA</h2>
+<div class="calculator">
+  <label>Профит за цикл с одного ордера:</label>
+  <input type="number" id="a1" step="0.0001" placeholder="0.0617">
+
+  <label>Желаемый профит за цикл:</label>
+  <input type="number" id="b1" step="0.0001" placeholder="0.1">
+
+  <div class="result">
+    Насколько нужно умножить текущий депозит что бы получать желаемый профит: <span id="c1">—</span>
+  </div>
+    </div>
+    <p>Для фючерсного DCA нужно умножать первый начальный ордер.</p>
+    <p>Для спотовых Grid нужно или открывать заново с новым депозитом или нажать кнопку "Инвестировать еще"</p>
+      </div>
+    </div>
+
+    <!-- Вкладка 4 -->
     <div class="tab-pane fade" id="about" role="tabpanel">
       <div class="card p-4">
         <h2>О проекте</h2>
@@ -332,6 +356,7 @@
   <script src="./modal.js"></script>
   <script src="./spotcals.js"></script>
   <script src="./walletcopy.js"></script>
+  <script src="./spotorderprofit.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
