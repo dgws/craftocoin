@@ -202,6 +202,9 @@
       <button class="nav-link" id="orderSize-tab" data-bs-toggle="tab" data-bs-target="#orderSize" type="button" role="tab">Спот/DCA</button>
     </li>
     <li class="nav-item" role="presentation">
+      <button class="nav-link" id="gridBot-tab" data-bs-toggle="tab" data-bs-target="#gridBot" type="button" role="tab">Grid Bots</button>
+    </li>
+    <li class="nav-item" role="presentation">
       <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
     </li>
   </ul>
@@ -295,7 +298,61 @@
       </div>
     </div>
 
-    <!-- Вкладка 4 -->
+     <!-- Вкладка 4 -->
+    <div class="tab-pane fade" id="gridBot" role="tabpanel">
+      <div class="card p-4">
+        <h2>Калькулятор прибыли Grid-бота</h2>
+        <div class="gridcalc-wrapper">
+  <h2>Калькулятор прибыли Grid-бота</h2>
+
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Сумма инвестиций (USDT)</label>
+    <input type="number" id="gridcalc-invest" class="gridcalc-input" value="15" step="0.01">
+  </div>
+
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Количество сеток</label>
+    <input type="number" id="gridcalc-grids" class="gridcalc-input" value="15" step="1">
+  </div>
+
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Прибыль по сетке (%)</label>
+    <input type="number" id="gridcalc-profit" class="gridcalc-input" value="1.5" step="0.01">
+  </div>
+
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Комиссия покупки (%)</label>
+    <input type="number" id="gridcalc-buyfee" class="gridcalc-input" value="0.1" step="0.01">
+  </div>
+
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Комиссия продажи (%)</label>
+    <input type="number" id="gridcalc-sellfee" class="gridcalc-input" value="0.1" step="0.01">
+  </div>
+
+  <button class="gridcalc-button" onclick="gridcalcCalculate()">Рассчитать прибыль</button>
+
+  <div class="gridcalc-result" id="gridcalc-result">
+    Введите данные и нажмите "Рассчитать"
+  </div>
+
+  <div class="gridcalc-divider"></div>
+
+  <h3 style="text-align:center; color:#ffd580;">📆 ROI за период</h3>
+  
+  <div class="gridcalc-group">
+    <label class="gridcalc-label">Количество срабатываний сетки в день</label>
+    <input type="number" id="gridcalc-fires" class="gridcalc-input" value="10" step="1" oninput="gridcalcRecalcROI()">
+  </div>
+
+  <div class="gridcalc-result" id="gridcalc-roiresult">
+    Введите данные выше для расчета ROI за день, неделю и месяц.
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- Вкладка 5 -->
     <div class="tab-pane fade" id="about" role="tabpanel">
       <div class="card p-4">
         <h2>О проекте</h2>
@@ -357,6 +414,8 @@
   <script src="./spotcals.js"></script>
   <script src="./walletcopy.js"></script>
   <script src="./spotorderprofit.js"></script>
+  <script src="./gridbot.js"></script>
+  <script src="./dcaTP.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
