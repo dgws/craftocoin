@@ -205,6 +205,9 @@
       <button class="nav-link" id="gridBot-tab" data-bs-toggle="tab" data-bs-target="#gridBot" type="button" role="tab">Grid Bots</button>
     </li>
     <li class="nav-item" role="presentation">
+      <button class="nav-link" id="orderFutersDca-tab" data-bs-toggle="tab" data-bs-target="#orderFutersDca" type="button" role="tab">OKX</button>
+    </li>
+    <li class="nav-item" role="presentation">
       <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
     </li>
   </ul>
@@ -284,10 +287,10 @@
       <h2>Рассчет профита с одного цикла для Grid ботов и Фючерсных DCA</h2>
 <div class="calculator">
   <label>Профит за цикл с одного ордера:</label>
-  <input type="number" id="a1" step="0.0001" placeholder="0.0617" pattern="[0-9,]*" inputmode="decimal">
+  <input type="number" id="a1" step="0.0001" placeholder="0.0617">
 
   <label>Желаемый профит за цикл:</label>
-  <input type="number" id="b1" step="0.0001" placeholder="0.1" pattern="[0-9,]*" inputmode="decimal">
+  <input type="number" id="b1" step="0.0001" placeholder="0.1">
 
   <div class="result">
     Насколько нужно умножить текущий депозит что бы получать желаемый профит: <span id="c1">—</span>
@@ -352,7 +355,39 @@
       </div>
     </div>
 
-    <!-- Вкладка 5 -->
+     <!-- Вкладка 5 -->
+    <div class="tab-pane fade" id="orderFutersDca" role="tabpanel">
+      <div class="card p-4">
+        <h2>Рассчет новой средней цены для биржевых фючерсных ботов на OKX</h2>
+        <div class="tpcalc-wrapper">
+           <div class="tpcalc-container">
+  <h3>🧮 Take-Profit Averaging Calculator</h3>
+  <div class="tpcalc-inputs">
+    <label>Количество (текущая позиция):</label>
+    <input type="number" id="tpcalc-q1" step="0.0001" placeholder="Например: 0.12" pattern="[0-9,]*" inputmode="decimal">
+
+    <label>Текущая цена входа / тейк-профит ($):</label>
+    <input type="number" id="tpcalc-p1" step="0.01" placeholder="Например: 4441.58" pattern="[0-9,]*" inputmode="decimal">
+
+    <label>Текущая рыночная цена ($):</label>
+    <input type="number" id="tpcalc-p2" step="0.01" placeholder="Например: 4000" pattern="[0-9,]*" inputmode="decimal">
+
+    <label>Желаемый тейк-профит ($):</label>
+    <input type="number" id="tpcalc-target" step="0.01" placeholder="Например: 4100" pattern="[0-9,]*" inputmode="decimal">
+
+    <label>Плечо (x):</label>
+    <input type="number" id="tpcalc-leverage" step="0.1" placeholder="Например: 5" pattern="[0-9,]*" inputmode="decimal">
+
+    <button onclick="tpcalc()">Рассчитать</button>
+  </div>
+
+  <div class="tpcalc-output" id="tpcalc-output"></div>
+</div>
+</div>
+      </div>
+    </div>
+
+    <!-- Вкладка 6 -->
     <div class="tab-pane fade" id="about" role="tabpanel">
       <div class="card p-4">
         <h2>О проекте</h2>

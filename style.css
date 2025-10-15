@@ -1,7 +1,7 @@
 /* GridDCA */
 @media (max-width: 480px) { 
   .calculator {
-  width: 400px;
+  width: 300px;
   }
 }
 .calculator {
@@ -114,6 +114,13 @@
 
 /* Рассчет тейк профита для dca фючерсных ботов */
 
+.tpcalc-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .tpcalc-container {
   max-width: 420px;
   background: #1e1e1e;
@@ -122,11 +129,13 @@
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(255,179,71,0.3);
   font-family: Arial, sans-serif;
+
 }
 .tpcalc-inputs {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
 }
 .tpcalc-inputs input {
   background: #2b2b2b;
