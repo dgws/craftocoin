@@ -1,5 +1,7 @@
-let lastROI = 0;
+let lastNetProfitPerOrder = 0;
 let lastInvest = 0;
+let lastGrids = 0;
+let lastOrderSize = 0;
 
 function gridcalcCalculate() {
   const invest = parseFloat(document.getElementById("gridcalc-invest").value);
@@ -14,12 +16,15 @@ function gridcalcCalculate() {
   }
 
   const orderSize = invest / grids;
-//   const netProfitPercent = profit - (feeBuy + feeSell) / 2;
-  const netProfitPerOrder = orderSize * (profit / 100);
+  const netProfitPercent = profit - (feeBuy + feeSell);
+  const netProfitPerOrder = orderSize * (netProfitPercent / 100);
   const totalProfit = netProfitPerOrder * grids;
-  const roi = (totalProfit / grids) * 100;
-  lastROI = roi;
+  const roi = (totalProfit / invest) * 100;
+
+  lastNetProfitPerOrder = netProfitPerOrder;
   lastInvest = invest;
+  lastGrids = grids;
+  lastOrderSize = orderSize;
 
   document.getElementById("gridcalc-result").innerHTML = `
     💰 <strong>Размер одного ордера:</strong> ${orderSize.toFixed(4)} USDT<br>
@@ -35,19 +40,20 @@ function gridcalcRecalcROI() {
   const fires = parseFloat(document.getElementById("gridcalc-fires").value);
   const roiContainer = document.getElementById("gridcalc-roiresult");
 
-  if (!lastROI || isNaN(fires) || fires <= 0) {
+  if (isNaN(fires) || fires <= 0 || !lastNetProfitPerOrder || !lastInvest) {
     roiContainer.innerText = "Введите количество срабатываний после расчета основной прибыли.";
     return;
   }
 
-  const dailyROI = lastROI * fires;
-  const weeklyROI = dailyROI * 7;
-  const monthlyROI = dailyROI * 30;
+  // 💰 расчёт чистой прибыли в USDT
+  const dailyProfitUSDT = lastNetProfitPerOrder * fires;
+  const weeklyProfitUSDT = dailyProfitUSDT * 7;
+  const monthlyProfitUSDT = dailyProfitUSDT * 30;
 
-  // 💰 расчёт прибыли в USDT
-  const dailyProfitUSDT = lastInvest * (dailyROI / 100);
-  const weeklyProfitUSDT = lastInvest * (weeklyROI / 100);
-  const monthlyProfitUSDT = lastInvest * (monthlyROI / 100);
+  // 📊 расчёт ROI по чистой прибыли
+  const dailyROI = (dailyProfitUSDT / lastInvest) * 100;
+  const weeklyROI = (weeklyProfitUSDT / lastInvest) * 100;
+  const monthlyROI = (monthlyProfitUSDT / lastInvest) * 100;
 
   roiContainer.innerHTML = `
     📅 <strong>ROI за день:</strong> ${dailyROI.toFixed(2)}% (${dailyProfitUSDT.toFixed(2)} USDT)<br>
