@@ -1,9 +1,4 @@
 /* GridDCA */
-@media (max-width: 480px) { 
-  .calculator {
-  width: 300px;
-  }
-}
 .calculator {
   font-family: Arial, sans-serif;
   background-color: #768282;
@@ -16,6 +11,8 @@
   border-radius: 15px;
   width: 450px;
   margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .calculator input {
@@ -25,6 +22,9 @@
   font-size: 16px;
   text-align: center;
   margin-bottom: 10px;
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
 }
 
 .calculator input[type="number"] {
@@ -34,6 +34,7 @@
 .calculator .result {
   font-size: 15px;
   font-weight: bold;
+  text-align: center;
 }
 
 #c1 {
@@ -110,6 +111,44 @@
   border-top: 1px solid #ffb347;
   margin: 15px 0;
   opacity: 0.5;
+}
+
+/* ✅ Адаптивность для экранов до 600px (смартфоны) */
+@media (max-width: 600px) {
+  .calculator {
+    width: 90%;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .calculator input {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .calculator .result {
+    font-size: 16px;
+  }
+
+  #c1 {
+    font-size: 22px;
+  }
+}
+
+/* ✅ Для очень маленьких экранов (до 400px, старые смартфоны) */
+@media (max-width: 400px) {
+  .calculator {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .calculator input {
+    font-size: 16px;
+  }
+
+  .calculator .result {
+    font-size: 15px;
+  }
 }
 
 /* Рассчет тейк профита для dca фючерсных ботов */
