@@ -1,5 +1,4 @@
-
-        function calculate() {
+   function calculate001() {
             let A = parseFloat(document.getElementById("num1").value) || 0;
             let B = parseFloat(document.getElementById("num2").value) || 0;
             let C = parseFloat(document.getElementById("num3").value) || 1;
@@ -17,4 +16,3 @@
             document.getElementById("num3").value = "";
             document.getElementById("result").innerText = "0";
         }
-   
