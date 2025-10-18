@@ -208,3 +208,65 @@
   padding: 12px;
   border-radius: 8px;
 }
+
+/* Профит в % на ордер  */
+
+.profitcalc-wrapper {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #ffb347;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 179, 71, 0.3);
+}
+
+.profitcalc-wrapper h2 {
+  text-align: center;
+  color: #ffd580;
+}
+
+.profitcalc-group {
+  margin-bottom: 12px;
+}
+
+.profitcalc-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.profitcalc-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ffb347;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.profitcalc-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffb347;
+  color: #1e1e1e;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profitcalc-button:hover {
+  background-color: #ffc76a;
+}
+
+.profitcalc-result {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #2e2e2e;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 16px;
+}

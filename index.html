@@ -205,7 +205,10 @@
       <button class="nav-link" id="gridBot-tab" data-bs-toggle="tab" data-bs-target="#gridBot" type="button" role="tab">Grid Bots</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="orderFutersDca-tab" data-bs-toggle="tab" data-bs-target="#orderFutersDca" type="button" role="tab">OKX</button>
+      <button class="nav-link" id="orderFutersDca-tab" data-bs-toggle="tab" data-bs-target="#orderFutersDca" type="button" role="tab">OKX Features DCA</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profitVProsentax-tab" data-bs-toggle="tab" data-bs-target="#profitVProsentax" type="button" role="tab">Когда продавать</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">О проекте</button>
@@ -305,9 +308,9 @@
      <!-- Вкладка 4 -->
     <div class="tab-pane fade" id="gridBot" role="tabpanel">
       <div class="card p-4">
-        <h2>Калькулятор прибыли Grid-бота</h2>
+        <h2>Рассчет прибыли в сетке Grid-бота</h2>
         <div class="gridcalc-wrapper">
-  <h2>Калькулятор прибыли Grid-бота</h2>
+  <h2>Прибыль на сетку Grid-бота</h2>
 
   <div class="gridcalc-group">
     <label class="gridcalc-label">Сумма инвестиций (USDT)</label>
@@ -389,6 +392,40 @@
     </div>
 
     <!-- Вкладка 6 -->
+    <div class="tab-pane fade" id="profitVProsentax" role="tabpanel">
+      <div class="card p-4">
+        <h2>Рассчет по какой цене нужно продать по желаемом % от цены покупки  </h2>
+        <div class="profitcalc-wrapper">
+  <h2>Рассчет когда продавать</h2>
+  
+  <div class="profitcalc-group">
+    <label class="profitcalc-label">Цена покупки (USDT)</label>
+    <input type="number" id="profitcalc-buy" class="profitcalc-input" value="190.50" step="0.01">
+  </div>
+
+  <div class="profitcalc-group">
+    <label class="profitcalc-label">Тейк-профит (%)</label>
+    <input type="number" id="profitcalc-tp" class="profitcalc-input" value="0.11" step="0.01">
+  </div>
+
+  <div class="profitcalc-group">
+    <label class="profitcalc-label">Комиссия покупки (%)</label>
+    <input type="number" id="profitcalc-buyfee" class="profitcalc-input" value="0.10" step="0.01">
+  </div>
+
+  <div class="profitcalc-group">
+    <label class="profitcalc-label">Комиссия продажи (%)</label>
+    <input type="number" id="profitcalc-sellfee" class="profitcalc-input" value="0.10" step="0.01">
+  </div>
+
+  <button class="profitcalc-button" onclick="profitcalcCalculate()">Рассчитать цену продажи</button>
+
+  <div class="profitcalc-result" id="profitcalc-result">Введите данные и нажмите "Рассчитать"</div>
+</div>
+      </div>
+    </div>
+
+      <!-- Вкладка 7 -->
     <div class="tab-pane fade" id="about" role="tabpanel">
       <div class="card p-4">
         <h2>О проекте</h2>
@@ -475,6 +512,7 @@
   <script src="./spotorderprofit.js"></script>
   <script src="./gridbot.js"></script>
   <script src="./dcaTP.js"></script>
+  <script src="./orderprof.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
