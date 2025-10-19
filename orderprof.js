@@ -11,5 +11,5 @@ function profitcalcCalculate() {
 
   const result = ((P * (1 + TP / 100)) * (1 + feeBuy / 100)) / (1 - feeSell / 100);
   document.getElementById("profitcalc-result").innerHTML = 
-    `💰 Цена продажи: <strong>${result.toFixed(2)} USDT</strong>`;
+    `💰 Цена продажи: <strong>${result.toFixed(4)} USDT</strong>`;
 }
